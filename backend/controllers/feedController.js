@@ -1,23 +1,23 @@
-const asyncHandler = require('')
+const asyncHandler = require('express-async-handler')
 
 // description GET feed
 
 // @route GET /api/feed
 
 // access Private
-const getFeeds = (req, res) => {
+const getFeeds =asyncHandler(async(req, res) => {
   res.status(200).json({message:'get feed'})
 
 
 
-}
+})
 
 // description Set feed
 
 // @route POST /api/feed
 
 // access Private
-const setFeed = (req, res) => {
+const setFeed =asyncHandler( async(req, res) => {
     if(!req.body.text){
       res.status(400)
       throw new Error('Please add a text field')
@@ -27,31 +27,30 @@ const setFeed = (req, res) => {
     res.status(200).json({message:'Set feed'})
   
   
-  }
+})
 
   // description update feed
 
 // @route PUT /api/feed/:id
 
 // access Private
-const updateFeed = (req, res) => {
+const updateFeed =asyncHandler( async (req, res) => {
     res.status(200).json({message:`Update feed ${req.params.id}`})
   
   
-  
-  }
+})
 
   // description delete feed
 
 // @route Delete /api/goals/:id
 
 // access Private
-const deleteFeed = (req, res) => {
+const deleteFeed =asyncHandler (async(req, res) => {
     res.status(200).json({message:`Delete feed ${req.params.id}`})
   
   
   
-  }
+})
 
 
 
