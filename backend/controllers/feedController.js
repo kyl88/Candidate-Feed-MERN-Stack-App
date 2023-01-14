@@ -17,7 +17,7 @@ const getFeeds =asyncHandler(async(req, res) => {
 // @route POST /api/feed
 
 // access Private
-const setFeed =asyncHandler( async(req, res) => {
+const setFeed =asyncHandler(async(req, res) => {
     if(!req.body.text){
       res.status(400)
       throw new Error('Please add a text field')
