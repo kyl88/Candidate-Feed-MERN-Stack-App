@@ -24,7 +24,7 @@ const getFeeds = asyncHandler(async(req, res) => {
 
 // post request is working
 const setFeed =asyncHandler(async(req, res) => {
-    if(!req.body.text){
+    if(!req.body.text || !req.body.name){
       res.status(400)
       throw new Error('Please add a text field')
 
@@ -32,6 +32,8 @@ const setFeed =asyncHandler(async(req, res) => {
 
     const feed = await Feed.create({
        text: req.body.text,
+       name: req.body.name,
+       
 
     })
 
