@@ -1,11 +1,13 @@
 const asyncHandler = require('express-async-handler')
 
+const Feed = require('../model/feedModel')
 // description GET feed
 
 // @route GET /api/feed
 
 // access Private
-const getFeeds =asyncHandler(async(req, res) => {
+const getFeeds = asyncHandler(async(req, res) => {
+  const feeds = await Feed.find()  
   res.status(200).json({message:'get feed'})
 
 
