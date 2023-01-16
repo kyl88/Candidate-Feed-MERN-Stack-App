@@ -8,7 +8,7 @@ const Feed = require('../model/feedModel')
 // access Private
 const getFeeds = asyncHandler(async(req, res) => {
   const feeds = await Feed.find()  
-  res.status(200).json({message:'get feed'})
+  res.status(200).json(feeds)
 
 
 
@@ -26,7 +26,12 @@ const setFeed =asyncHandler(async(req, res) => {
 
     }
 
-    res.status(200).json({message:'Set feed'})
+    const feed = await Feed.create({
+       text: req.body.text,
+
+    })
+
+    res.status(200).json(feed)
   
   
 })
@@ -37,6 +42,16 @@ const setFeed =asyncHandler(async(req, res) => {
 
 // access Private
 const updateFeed =asyncHandler( async (req, res) => {
+   const feed = await Feed.findById(req.params.id)
+
+   if(!feed){
+     res.status(400)
+     throw new Error('Feed not found')
+       
+
+   }
+
+   
     res.status(200).json({message:`Update feed ${req.params.id}`})
   
   
