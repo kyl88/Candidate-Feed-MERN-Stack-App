@@ -49,13 +49,19 @@ const updateFeed =asyncHandler( async (req, res) => {
      throw new Error('Feed not found')
        
 
-   }
+    }
+
+    const updateFeed = await Feed.findByIdAndUpdate(req.params.id,req.
+        body, {
+          new:  true,  
+
+        })  
+
+        res.status(200).json(updateFeed)
+
+    })
 
    
-    res.status(200).json({message:`Update feed ${req.params.id}`})
-  
-  
-})
 
   // description delete feed
 
@@ -63,7 +69,17 @@ const updateFeed =asyncHandler( async (req, res) => {
 
 // access Private
 const deleteFeed =asyncHandler (async(req, res) => {
-    res.status(200).json({message:`Delete feed ${req.params.id}`})
+   const feed = await Feed.findById(req.params.id)
+   
+    if (!goal) {
+       res.status(400)
+       throw new error ('Feed not found')
+
+    }
+
+    await feed.remove()
+
+    res.status(200).json({id: req.params.id})
   
   
   
