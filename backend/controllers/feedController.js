@@ -51,7 +51,7 @@ const updateFeed =asyncHandler( async (req, res) => {
 
     }
 
-    const updateFeed = await Feed.findByIdAndUpdate(req.params.id,req.
+    const updateFeed = await Feed.findByIdAndUpdate(req.params.id, req.
         body, {
           new:  true,  
 
@@ -71,7 +71,7 @@ const updateFeed =asyncHandler( async (req, res) => {
 const deleteFeed =asyncHandler (async(req, res) => {
    const feed = await Feed.findById(req.params.id)
    
-    if (!goal) {
+    if (!feed) {
        res.status(400)
        throw new error ('Feed not found')
 
