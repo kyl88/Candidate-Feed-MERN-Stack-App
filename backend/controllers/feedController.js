@@ -6,6 +6,8 @@ const Feed = require('../model/feedModel')
 // @route GET /api/feed
 
 // access Private
+
+// GET request is working
 const getFeeds = asyncHandler(async(req, res) => {
   const feeds = await Feed.find()  
   res.status(200).json(feeds)
@@ -19,6 +21,8 @@ const getFeeds = asyncHandler(async(req, res) => {
 // @route POST /api/feed
 
 // access Private
+
+// post request is working
 const setFeed =asyncHandler(async(req, res) => {
     if(!req.body.text){
       res.status(400)
@@ -41,6 +45,8 @@ const setFeed =asyncHandler(async(req, res) => {
 // @route PUT /api/feed/:id
 
 // access Private
+
+// update request is working
 const updateFeed =asyncHandler( async (req, res) => {
    const feed = await Feed.findById(req.params.id)
 
@@ -63,11 +69,13 @@ const updateFeed =asyncHandler( async (req, res) => {
 
    
 
-  // description delete feed
+// description delete feed
 
 // @route Delete /api/goals/:id
 
 // access Private
+
+// Delete request is working
 const deleteFeed =asyncHandler (async(req, res) => {
    const feed = await Feed.findById(req.params.id)
    
